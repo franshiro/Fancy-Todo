@@ -5,7 +5,7 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: [true, 'Email is required'],
-        unique: [true, 'An Email with that address has already been registered, please use another one']
+        unique: [true, 'Email already use']
     },
     password: {
         type: String
@@ -15,7 +15,8 @@ const userSchema = new Schema({
         required: [true, 'name is required']
     },
     isGoogle: {
-        type: Boolean
+        type: Boolean,
+        default : false
     },
     todo: [{type: Schema.Types.ObjectId, ref: 'Todo'}]
 }, {
