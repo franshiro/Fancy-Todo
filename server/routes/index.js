@@ -13,7 +13,7 @@ router.post('/signin', userController.signin)
 
 router.use(midleware.isLogin)
 router.use('/users', usersRoute)
-// router.use('/todos', todosRoute)
+router.use('/todos', todosRoute)
 
 /* GET home page. */
 

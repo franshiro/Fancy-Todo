@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/all', userController.findAllUser)
+router.get('/showAll', userController.showAllUserTodos)
 router.get('/profile',userController.viewProfile)
 router.put('/edit', userController.updateUser)
 router.delete('/deleteProfile', userController.deleteUser)

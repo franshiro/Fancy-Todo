@@ -91,6 +91,19 @@ class userController{
         })
 
     }
+    static showAllUserTodos(req, res){
+        User.findOne({ _id : req.login.id})
+        .populate('todo')
+        .exec()
+        .then(user => {
+            res.status(200).json(user)
+        })
+        .catch(err => {
+            res.status(500).json({
+                message : err
+            })
+        })
+    }
 }
 
 module.exports = userController
