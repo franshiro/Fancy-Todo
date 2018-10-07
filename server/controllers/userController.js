@@ -1,9 +1,72 @@
 const User = require('../models/user')
 const Todo = require('../models/todo')
 const jwt = require('jsonwebtoken')
+const axios = require('axios')
 require('dotenv').config()
 
+const CLIENT_ID = process.env.CLIENT_ID
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(CLIENT_ID);
+
 class userController{
+
+    static signinGoogle(req,res){
+        let googleToken = req.body.googleToken
+        // console.log(googleToken)
+        const ticket = new Promise((resolve, reject)=> {
+            client.verifyIdToken({
+            idToken: googleToken,
+            audience: CLIENT_ID
+          }, (err, data) => {
+            if(!err){
+              const payload = data.getPayload();
+              const userid = payload['sub'];
+              resolve(userid)
+            } else {
+              reject(err)
+            }
+          })
+        })
+        .then(userid => {
+            console.log(userid)
+            axios({
+                method : 'POST',
+                url : `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${googleToken}`,
+            })
+            .then(response => {
+                let data  = response.data
+                User.findOne({email : data.email})
+                .then(user => {
+                    console.log(user)
+                    let token = jwt.sign({
+                        id : user.id,
+                        email : user.email,
+                        name : user.name,
+                        isGoogle : user.isGoogle
+                    }, process.env.SECRET)
+                    if(user){
+                        res.status(200).json({token})
+                    }
+                    else{
+                        User.create({
+                            name : data.name,
+                            email : data.email,
+                            password : data.sub,
+                            isGoogle : true
+                        })
+                        .then(createUser => {
+                            res.status(200).json({token})
+                        })
+                    }
+                })
+            })
+          })
+          .catch(err => {
+            console.log(err)
+          })
+
+    }
+
     static signup(req, res){
         User.create({
             email : req.body.email,
