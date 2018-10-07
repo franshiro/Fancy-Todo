@@ -9,6 +9,7 @@ router.get('/', (req, res, next) => {
 router.post('/add', todoController.addTodo)
 router.put('/update/:id', todoController.updateTodo)
 router.get('/show', todoController.findAllTodo)
+router.get('/showOne/:id', todoController.showOne)
 router.delete('/delete/:id', todoController.deleteTodo)
 
 router.patch('/setfinish/:id', todoController.setFinish)

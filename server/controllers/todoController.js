@@ -108,6 +108,15 @@ class TodoController{
             })
         })
     }
+    static showOne(req, res){
+        Todo.findById(req.params.id)
+        .then(todo => {
+            res.status(200).json({todo})
+        })
+        .catch(err => {
+            res.status(500).json({err})
+        })
+    }
 }
 
 module.exports = TodoController
