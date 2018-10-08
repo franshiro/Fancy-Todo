@@ -73,6 +73,7 @@ function signin(){
         if(response.token){
             localStorage.setItem('token', response.token)
             loadTodo()
+            readyFn()
         }
     })
     .fail(err => {
