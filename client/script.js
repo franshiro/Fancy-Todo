@@ -1,7 +1,11 @@
 $(document).ready(function () {
-    hideButton()
     loadTodo()
+    readyFn()
 });
+
+function readyFn(){
+    hideButton()
+}
 
 
 function hideButton(){
@@ -36,6 +40,7 @@ function onSignIn(googleUser) {
         // console.log(id_token)
         localStorage.setItem('token', data.token)
         loadTodo()
+        readyFn()
     })
     .fail(err => {
         console.log(err)
@@ -47,6 +52,8 @@ function signOut() {
     auth2.signOut().then(function () {
     console.log('User signed out.');
     localStorage.removeItem('token')
+    readyFn()
+    loadTodo()
     });
     // console.log('user signed out')
     // localStorage.removeItem('token')
