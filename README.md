@@ -80,6 +80,8 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjg5ZWEwM2MyZjMxM2RmNjVhNTE5NyI
 {
     "message": "You must login First"
 }
+```
+
 POST signin
 -----------
 
@@ -93,7 +95,7 @@ http://localhost:3000/signin
     "email" : "frans@gmail.com",
     "password" : "1234"
 }
-
+```
 #### Succsess
 ```
 {
@@ -178,6 +180,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjhlY2YyOTdhNTFkNzZkZDUwNGY4NCI
 {
     "message": "You must login First"
 }
+```
 PUT updateTodo
 --------------
 
@@ -196,6 +199,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjhlY2YyOTdhNTFkNzZkZDUwNGY4NCI
     "description" : "makan siang bareng teman2 hacktiv",
     "dueDate" : "10-10-2018"
 }
+```
 #### Succsess
 ```
 {
@@ -211,7 +215,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjhlY2YyOTdhNTFkNzZkZDUwNGY4NCI
 PATCH set Finish
 ----------------
 
-http://localhost:3000/todos/setFinish/5bb90c3d3de07a0b69b085e1
+http://localhost:3000/todos/setFinish/:id
 
 #### Headers
 ```
@@ -230,10 +234,11 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjhlY2YyOTdhNTFkNzZkZDUwNGY4NCI
 {
     "message": "You must login First"
 }
+```
 PATCH set not Finish
 --------------------
 
-http://localhost:3000/todos/setNotFinishYet/5bb90c3d3de07a0b69b085e1
+http://localhost:3000/todos/setNotFinishYet/:id
 
 #### Headers
 ```
@@ -252,10 +257,11 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjhlY2YyOTdhNTFkNzZkZDUwNGY4NCI
 {
     "message": "You must login First"
 }
+```
 DELETE deleteTodo
 -----------------
 
-http://localhost:3000/todos/update/5bb90bb23de07a0b69b085e0
+http://localhost:3000/todos/update/:id
 
 #### Headers
 ```
@@ -274,6 +280,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViYjhlY2YyOTdhNTFkNzZkZDUwNGY4NCI
 {
     "message": "You must login First"
 }
+```
 GET showTodo
 ------------
 
