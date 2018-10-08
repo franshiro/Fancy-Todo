@@ -28,7 +28,7 @@ class userController{
           })
         })
         .then(userid => {
-            console.log(userid)
+            // console.log(userid)
             axios({
                 method : 'POST',
                 url : `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${googleToken}`,
@@ -37,7 +37,7 @@ class userController{
                 let data  = response.data
                 User.findOne({email : data.email})
                 .then(user => {
-                    console.log(user)
+                    // console.log(user)
                     let token = jwt.sign({
                         id : user.id,
                         email : user.email,
@@ -74,7 +74,7 @@ class userController{
             name : req.body.name
         })
         .then(user => {
-            res.status(200).json({user})
+            res.status(200).json({message : `Created account succsess`})
         })
         .catch(err => {
             res.status(500).json({

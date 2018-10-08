@@ -33,7 +33,7 @@ function onSignIn(googleUser) {
         }
     })
     .done(data => {
-        console.log(id_token)
+        // console.log(id_token)
         localStorage.setItem('token', data.token)
         loadTodo()
     })
