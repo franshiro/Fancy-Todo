@@ -99,7 +99,7 @@ class TodoController{
         })
         .then(todo => {
             res.status(200).json({
-                message : `Your todo has been set to finish`
+                message : `Your todo has been set to unFinish`
             })
         })
         .catch(err => {
